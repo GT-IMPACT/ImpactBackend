@@ -21,7 +21,7 @@ tasks.register("deploy") {
         val file = File(buildDir, "libs")
         val deploy = File(rootDir, "deploy")
         val jar = file.listFiles()?.firstOrNull()!!
-        jar.copyTo(File(deploy, jar.name))
+        jar.copyTo(File(deploy, jar.name), overwrite = true)
         val shStarter = File(deploy, "start.sh")
         shStarter.createNewFile()
         shStarter.writeText("java -server -jar ${jar.name}")
