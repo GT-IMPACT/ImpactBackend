@@ -16,6 +16,19 @@ repositories {
     mavenCentral()
 }
 
+tasks.register("deploy") {
+    doLast {
+        val file = File(buildDir, "libs")
+        val deploy = File(rootDir, "deploy")
+        val jar = file.listFiles()?.firstOrNull()!!
+        jar.copyTo(File(deploy, jar.name))
+        val shStarter = File(deploy, "start.sh")
+        shStarter.createNewFile()
+        shStarter.writeText("java -server -jar ${jar.name}")
+    }
+    dependsOn(tasks.shadowJar)
+}
+
 dependencies {
     implementation("io.ktor:ktor-server-call-logging-jvm")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
