@@ -38,16 +38,16 @@ suspend fun PipelineContext<*, ApplicationCall>.uploadMod(folderMods: File) = wi
         .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
 
     if (found?.name == name) {
-        println("=== $date\nТакой файл уже существует: ${found.name}\n===")
+        println("=== $date\nThis File already created: ${found.name}\n===")
         return@withContext call.respond(HttpStatusCode.OK)
     } else {
 
         found?.also {
-            if (!it.deleteRecursively()) println("Не удалось удалить ${it.name}")
-            else println("=== $date\nОбновление: ${it.name} ----> $name\n===")
+            if (!it.deleteRecursively()) println("Error Delete ${it.name}")
+            else println("=== $date\nUPDATE: ${it.name} ----> $name\n===")
         } ?: run {
-            println("=== $date\nНе удалось идентифицировать файл по параметру: $modId")
-            println("\nОбновление: Добавлено ----> $name\n===")
+            println("=== $date\nNot Found: $modId")
+            println("\nUPDATE: Added ----> $name\n===")
         }
 
         val modFile = call.receiveStream().use {
