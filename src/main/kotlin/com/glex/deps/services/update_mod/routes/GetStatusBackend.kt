@@ -7,7 +7,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Routing.addGetStatusBackend() {
-    post("status") {
+    get("status") {
         call.respond(HttpStatusCode.OK, Response(data = "Status: OK"))
     }
 }
