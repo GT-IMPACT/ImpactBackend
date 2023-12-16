@@ -43,4 +43,5 @@ bin/
 /modpacks/
 /cfg/
 /cdn/
+/deploy/
 /.idea/
