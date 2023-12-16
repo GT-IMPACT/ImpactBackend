@@ -25,8 +25,8 @@ fun Application.init() {
             
             ======== SERVER STARTED ========
             
-            HOST: ${environment.config.host}
-            PORT: ${environment.config.port}
+            HOST: ${Configuration.serverHost}
+            PORT: ${Configuration.serverPort}
             
             ================================
             
