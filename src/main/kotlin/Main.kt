@@ -20,6 +20,18 @@ fun main(args: Array<String>) {
 }
 
 fun Application.init() {
+    println(
+        """
+            
+            ======== SERVER STARTED ========
+            
+            HOST: ${environment.config.host}
+            PORT: ${environment.config.port}
+            
+            ================================
+            
+        """.trimIndent()
+    )
     configureMonitoring()
     configureSerialization()
     configureRoutes()
