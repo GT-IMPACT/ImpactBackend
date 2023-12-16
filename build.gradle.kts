@@ -42,7 +42,6 @@ dependencies {
 //    implementation("io.ktor:ktor-server-auth-jwt-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-status-pages")
-    implementation("io.ktor:ktor-server-cors")
     implementation("io.ktor:ktor-server-html-builder")
 
 //    implementation("io.ktor:ktor-client-core:2.3.5")
